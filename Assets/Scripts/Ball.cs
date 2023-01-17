@@ -5,16 +5,23 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     public Rigidbody2D rb;
+
     public int speed;
     bool isStarted;
     float randomX;
 
     public Pad pad;
+
     float yBallPosition;
 
     private void Start()
     {
         yBallPosition = transform.position.y;
+    }
+
+    public void RestartBall()
+    {
+        isStarted = false;
     }
     private void Update()
     {

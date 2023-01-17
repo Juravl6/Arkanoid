@@ -6,6 +6,13 @@ using UnityEngine.SceneManagement;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField]int blocksCount;
+    int indexScene;
+
+    private void Start()
+    {
+        indexScene = SceneManager.GetActiveScene().buildIndex;
+    }
+
     public void CreateBlock()
     {
         blocksCount++;
@@ -19,5 +26,10 @@ public class LevelManager : MonoBehaviour
             int index = SceneManager.GetActiveScene().buildIndex;
             SceneManager.LoadScene(index + 1);
         }
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(indexScene);
     }
 }

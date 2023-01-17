@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class ScoreCounter : MonoBehaviour
 {
     int score;
+
     public Text ScoreText;
+
     private void Awake()
     {
         ScoreCounter[] scoreCounters = FindObjectsOfType<ScoreCounter>();
@@ -28,6 +30,12 @@ public class ScoreCounter : MonoBehaviour
     public void AddScore(int addScore)
     {
         score += addScore;
-        ScoreText.text = score.ToString();
+        ScoreText.text = "Points" + score;
+    }
+
+    public void ZeroScore()
+    {
+        score = 0;
+        ScoreText.text = "Points" + score;
     }
 }
