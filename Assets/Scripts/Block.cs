@@ -7,6 +7,8 @@ public class Block : MonoBehaviour
     int lives = 2;
     public int points;
     public bool invisible;
+    public bool explosive;
+    public float explosiveRadius;
     public GameObject pickupPrefab;
     SpriteRenderer spriteRenderer;
     LevelManager levelManager;
@@ -48,5 +50,40 @@ public class Block : MonoBehaviour
         levelManager.BlockDestroyed();
         Instantiate(pickupPrefab, transform.position, Quaternion.identity);
         Destroy(gameObject);
+
+        if (explosive)
+        {
+            Explode();
+        }
+    }
+
+    public void Explode()
+    {
+        int layerMask = LayerMask.GetMask("Block");
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, explosiveRadius, layerMask);
+
+        foreach (Collider2D col in colliders)
+        {
+            //Destroy(i.gameObject);
+            Block block = col.GetComponent<Block>();
+            block.BlockDestroy();
+            if (block == null)
+            {
+                Destroy(col.gameObject);
+            }
+            else
+            {
+                block.BlockDestroy();
+            }
+        }
+        //for (int i = 0; i < colliders.Length; i++)
+        //{
+            //Destroy(colliders[i].gameObject;
+        //}
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, explosiveRadius);
     }
 }

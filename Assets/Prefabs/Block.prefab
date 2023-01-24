@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7935156621501763116}
   - component: {fileID: 7935156621501763538}
   - component: {fileID: 7935156621501763539}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,3 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: 100
+  invisible: 0
+  explosive: 0
+  explosiveRadius: 0
+  pickupPrefab: {fileID: 0}

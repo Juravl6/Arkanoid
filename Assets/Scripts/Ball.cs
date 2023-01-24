@@ -10,9 +10,16 @@ public class Ball : MonoBehaviour
     bool isStarted;
     float randomX;
 
+    AudioSource audioSource;
+
     public Pad pad;
 
     float yBallPosition;
+
+    public void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     private void Start()
     {
@@ -23,6 +30,12 @@ public class Ball : MonoBehaviour
     {
         isStarted = false;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        audioSource.Play();    
+    }
+
     private void Update()
     {
         if (isStarted)
