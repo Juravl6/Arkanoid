@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ball
   - pad
+  - FxTemporaire
+  - Block
   layers:
   - Default
   - TransparentFX

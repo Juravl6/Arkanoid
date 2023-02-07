@@ -10,6 +10,8 @@ public class Block : MonoBehaviour
     public bool explosive;
     public float explosiveRadius;
     public GameObject pickupPrefab;
+    public GameObject particlrPrefab;
+
     SpriteRenderer spriteRenderer;
     LevelManager levelManager;
     ScoreCounter scoreCounter;
@@ -44,7 +46,7 @@ public class Block : MonoBehaviour
         }
     }
 
-    private void BlockDestroy()
+    public void BlockDestroy()
     {
         scoreCounter.AddScore(points);
         levelManager.BlockDestroyed();
